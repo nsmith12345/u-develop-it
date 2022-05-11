@@ -16,14 +16,14 @@ const db = mysql.createConnection(
     // Your MySQL username,
     user: 'root',
     // Your MySQL password
-    password: '',
+    password: 'CodingRocks123!',
     database: 'election'
   },
   console.log('Connected to the election database.')
 );
 
 // Get all candidates
-app.get('/api/candidates', (req, res) => {
+app.get('/api/candidate', (req, res) => {
   const sql = `SELECT * FROM candidates`;
 
   db.query(sql, (err, rows) => {
@@ -48,6 +48,7 @@ app.get('/api/candidate/:id', (req, res) => {
       res.status(400).json({ error: err.message });
       return;
     }
+    console.table(row);
     res.json({
       message: 'success',
       data: row
